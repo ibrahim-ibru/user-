@@ -19,8 +19,13 @@ document.getElementById("reg-form").addEventListener("submit",async(ev)=>{
     if(res.status==201){
         const {msg}= await res.json()
         alert(msg)
-        window.location.href="../pages/home.html"
+        window.location.href="../pages/login.html"
     }
+    if(res.status==404){
+        const {msg}= await res.json()
+        alert(msg)
+    }
+
 
 
     } catch (error) {

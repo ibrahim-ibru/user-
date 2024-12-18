@@ -1,5 +1,7 @@
 import userSchema from "../model/user.model.js"
 import bcrypt from "bcrypt"
+import pkg from "jsonwebtoken"
+const { sign } =pkg
 
 export async function addUser(req,res) {
     console.log(req.body);
@@ -49,3 +51,35 @@ export async function addUser(req,res) {
       
 }
 
+
+export async function loginUser(req,res){
+    const {email,password}= req.body
+    // check fiels are empty
+    if(!(email&&password))
+        return res.status(404).send({msg:"fields are empty"})
+
+    const user= await userSchema.findOne({email})
+    if(user==null)
+        return res.status(404).send({msg:"email is not valid"})
+    const success= await bcrypt.compare(password,user.password)
+    console.log(success);
+    if(!(success))
+        return res.status(404).send({msg:"Incorrect password"})
+    const token= sign({userID:user._id},process.env.JWT_TOKEN,{expiresIn:"24h"})
+    res.status(200).send({msg:"Succesfully logged in",token})
+}
+
+
+export async function Home(req,res){
+    // res.send("hai")
+    try {
+        console.log("end point");
+        console.log(req.user);
+        const _id=req.user.userID
+        const user=await userSchema.findOne({_id})
+        res.status(200).send({username:user.username})
+
+    } catch (error) {
+        res.status(400).send({error})
+    }
+}
