@@ -3,9 +3,14 @@ body{
 }
 
 .container{
-    height: 100vh;
-    width: 100%;
-    background-color:aqua ;
+    height: 60vh;
+    width: 50%;
+    margin: auto;
+    border-radius: 30px;
+    background-color: rgb(195, 219, 241);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .nav{
     height: 10vh;
@@ -13,8 +18,9 @@ body{
     /* width: 100%; */
     display: flex;
     justify-content: space-between;
+    color: #fff;
     align-items: center;
-    background-color: #fff;
+    background-color: rgb(41, 122, 214);
 }
 
 .left{
@@ -22,11 +28,30 @@ body{
     width: 65px;
     border-radius: 50%;
     background-color: gray;
+    font-size: 63px;
 }
 
-.mid{
-
+.right a{
+    font-size: 20px;
+    color: #fff;
+    text-decoration: none;
+    margin-right: 20px;
 }
+
+.body-main{
+    height: 80vh;
+    width: 100%;
+    align-content: center;
+    /* background-color: black; */
+}
+
+.greeting{
+    height: 250px;
+    width: 350px;
+    border-radius: 20px;
+    background-color: #bcdbee;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;}
+
 .reg-container{
     height: 100vh;
     width: 100%;
@@ -41,13 +66,13 @@ body{
     margin: auto;
     border-radius: 30px;
     align-content: center;
+    box-shadow: 3px 5px 1px black;
     text-align: center;
 }
 form{
     margin: auto;
     height: 80%;
     width: 90%;
-    /* background-color: yellow; */
 }
 
 form input{
@@ -69,3 +94,17 @@ form button{
     color: #fff;
     font-weight: 600;
 }
+
+.greeting h1{
+    font-size: 57px;
+    color: #3a99d4;
+    text-align: center;
+}
+
+.greeting p{
+    text-align: center;
+    font-size: 40px;
+    color: #3a99d4;
+    font-weight: 600;
+}
+
