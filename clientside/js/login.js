@@ -21,7 +21,7 @@ document.getElementById("login-form").addEventListener("submit",async(ev)=>{
         console.log(token);
         alert(msg)
         sessionStorage.setItem("token",token)
-        window.location.href="../pages/home.html"
+        window.location.href="../index.html"
     }
     else{
         const {msg}= await res.json()

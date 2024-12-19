@@ -65,7 +65,7 @@ export async function loginUser(req,res){
     console.log(success);
     if(!(success))
         return res.status(404).send({msg:"Incorrect password"})
-    const token= sign({userID:user._id},process.env.JWT_TOKEN,{expiresIn:"24h"})
+    const token= sign({userID:user._id},process.env.JWT_TOKEN,{expiresIn:"20s"})
     res.status(200).send({msg:"Succesfully logged in",token})
 }
 

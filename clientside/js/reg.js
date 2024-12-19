@@ -6,6 +6,8 @@ document.getElementById("reg-form").addEventListener("submit",async(ev)=>{
     const password=document.getElementById("pass").value
     const cpassword=document.getElementById("cpass").value
 
+
+
     console.log(username,email,password,cpassword);
     
 
@@ -34,4 +36,9 @@ document.getElementById("reg-form").addEventListener("submit",async(ev)=>{
     }
     
 })
+
+
+async function checkDetails(uname,email,pass,cpass) {
+    
+}
 
