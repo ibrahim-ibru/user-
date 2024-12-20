@@ -1,3 +1,13 @@
+const API="http://localhost:3000"
+let profile;
+
+document.getElementById("profile").addEventListener("change",async(e)=>{
+    profile=await convertBase64(e.target.files[0])
+    console.log(profile);
+    
+    
+})
+
 document.getElementById("reg-form").addEventListener("submit",async(ev)=>{
     try {
         ev.preventDefault()
@@ -14,7 +24,7 @@ document.getElementById("reg-form").addEventListener("submit",async(ev)=>{
     const res= await fetch("http://localhost:3000/api/adduser",{
         method:"POST",
         headers:{"Content-Type":"application/json"},
-        body:JSON.stringify({username,email,password,cpassword})
+        body:JSON.stringify({username,email,password,cpassword,profile})
     })
     console.log(res);
 
@@ -36,6 +46,20 @@ document.getElementById("reg-form").addEventListener("submit",async(ev)=>{
     }
     
 })
+
+
+function convertBase64(file) {
+    return new Promise((res,rej)=>{
+        const fileReader=new FileReader()
+        fileReader.readAsDataURL(file)
+        fileReader.onload=()=>{
+            res(fileReader.result)
+        }
+        fileReader.onerror=(error)=>{
+            rej(error)
+        }
+    })
+}
 
 
 async function checkDetails(uname,email,pass,cpass) {

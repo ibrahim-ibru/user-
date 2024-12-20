@@ -1,3 +1,4 @@
+const API="http://localhost:3000"
 
 document.getElementById("login-form").addEventListener("submit",async(ev)=>{
     try {

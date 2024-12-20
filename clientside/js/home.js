@@ -1,3 +1,4 @@
+const API="http://localhost:3000"
 
 async function getUser(){
     try {
@@ -8,9 +9,11 @@ async function getUser(){
             headers:{"authorization":`Bearer ${token}`}
         })
         if(res.status==200){
-            const {username}=await res.json()
+            const {username,profile}=await res.json()
             console.log(username)
             document.getElementById("usname").textContent=username
+            document.getElementById("proflog").style.display="none"
+            document.getElementById("imgleft").src=profile
         }
         else{
             const {msg}= await res.json()
