@@ -1,6 +1,18 @@
 import userSchema from "../model/user.model.js"
 import bcrypt from "bcrypt"
 import pkg from "jsonwebtoken"
+import nodemailer from "nodemailer"
+
+const transporter = nodemailer.createTransport({
+    host: "sandbox.smtp.mailtrap.io",
+    port: 2525,
+    secure: false, // true for port 465, false for other ports
+    auth: {
+      user: "8aef8d55f99f68",
+      pass: "19026f090c25f4",
+    },
+  });
+  
 const { sign } =pkg
 
 export async function addUser(req,res) {
@@ -81,5 +93,36 @@ export async function Home(req,res){
 
     } catch (error) {
         res.status(400).send({error})
+    }
+}
+
+export async function verifyEmail(req,res) {
+    const code=`<div style="height: 40rem;border: 2px solid black;width: auto;width: 30rem;padding: 10px;margin: auto;">
+        <header style="height: 150px;margin: auto;margin-bottom: 20px; width: 100%;color: aliceblue;text-align: center;align-content: center; background-color: black;">
+            <h1>Verify Your Email</h1>
+        </header>
+        <div style="height: 60%; width: 95%;border: 1px solid black;border-radius: 5px;padding: 10px;">
+            <h4>Hi User,</h4><br>
+            <p>Your abc account is requested to reset the password if that's you then click verify button below and set your new password .If this isn't you then just ignore it. Have a nice day.</p>
+            <a href="http://localhost:3000/pages/forgetpassword.html"><button style="height: 30px;width: 15rem; background-color: green;color: white;">Click Here To Set New Password</button></a>
+        </div>
+    </div>`
+    try {
+        console.log(req);
+        
+        console.log("here");
+        console.log(req.body);
+        const info = await transporter.sendMail({
+            from: 'rihoba4697@ronete.com', // sender address
+            to: req.body.email, // list of receivers
+            subject: "Verify Email", // Subject line
+            text: "Verify your email and join with us", // plain text body
+            html: code, // html body
+          });
+        
+          console.log("Message sent: %s", info.messageId);
+          res.status(200).send({msg:"Check your email"})
+    } catch (er) {
+        res.status(400).send({error:er})
     }
 }

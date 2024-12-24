@@ -14,6 +14,8 @@ async function getUser(){
             document.getElementById("usname").textContent=username
             document.getElementById("proflog").style.display="none"
             document.getElementById("imgleft").src=profile
+            document.getElementById("log").textContent="LOG OUT"
+
         }
         else{
             const {msg}= await res.json()
@@ -25,3 +27,5 @@ async function getUser(){
     }
 }
 getUser()
+
+

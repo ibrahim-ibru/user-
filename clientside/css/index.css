@@ -1,5 +1,7 @@
 body{
     margin: 0;
+    transition: .3s; 
+
 }
 
 .container{
@@ -113,5 +115,59 @@ form button{
     font-size: 40px;
     color: #3a99d4;
     font-weight: 600;
+}
+
+.cpass{
+    height: 30rem;
+    width: 40rem;
+    background-color: #95cdf0;
+    margin: auto;
+    color: #fff;
+    margin-top: 5%;
+    text-align: center;
+    align-content: center;
+    border-radius: 30px;
+}
+
+.cpass input{
+    height: 25px;
+    width: 20rem;
+    margin:10px 0 30px ;
+    border-radius: 10px;
+    border: 0;
+    border-bottom: 1px solid black;
+}
+
+.cpass button, .verifyemail-body button{
+        height: 40px;
+        width: 10rem;
+        border-radius: 20px;
+        background-color: rgb(33, 150, 33);
+        color: aliceblue;
+        font-weight: 600;
+        margin: 30px 0;
+        transition: .3s; 
+    
+}
+
+.verifyemail-body{
+    height: 20rem;
+    width: 30rem;
+    background-color: #95cdf0;
+    color: #fff;
+    text-align: center;
+    align-content: center;
+    margin: auto;
+    margin-top: 10%;
+    border-radius: 30px;
+}
+
+.verifyemail-body input{
+    margin: 20px 0;
+    height: 25px;
+    width: 15rem;
+    border: 0;
+    border-bottom: 1px solid black;
+    border-radius: 5px;
 }
 
